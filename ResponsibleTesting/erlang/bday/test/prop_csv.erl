@@ -2,7 +2,7 @@
 -include_lib("proper/include/proper.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
--export([csv_source/0]).
+-export([csv_source/0, field/0]).
 
 
 %%%%%%%%%%%%%%%%%%

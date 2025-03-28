@@ -95,6 +95,7 @@ decode_quoted(String) -> decode_quoted(String, []).
 %% @private 引用符に囲まれた文字列をデコードする
 -spec decode_quoted(string(), [char()]) -> {ok | done, string(), string()}.
 decode_quoted([$"], Acc) -> {done, lists:reverse(Acc), ""};
+% CSV における改行は RFC4180 で CRLF として定義されている
 decode_quoted([$", $\r, $\n | Rest], Acc) -> {done, lists:reverse(Acc), Rest};
 decode_quoted([$", $, | Rest], Acc) -> {ok, lists:reverse(Acc), Rest};
 decode_quoted([$", $" | Rest], Acc) -> decode_quoted(Rest, [$" | Acc]);
